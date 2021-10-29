@@ -18,6 +18,7 @@ function main(){
         VIDEO.onloadeddata=function (){
             handleResize();
             //window.addEventListener('resize',handleResize);
+            initializePieces(SIZE.rows,SIZE.columns)
             updateCanvas();
         }
     }).catch(function (err){
@@ -50,7 +51,9 @@ function updateCanvas(){
     window.requestAnimationFrame(updateCanvas);
 }
 
-function initializePieces(){
+function initializePieces(rows,cols){
+    SIZE.rows=rows;
+    SIZE.columns=cols;
     PIECES=[];
     for(let i=0;i<SIZE.rows;i++){
         for (let j=0;j<SIZE.columns;j++){
@@ -70,6 +73,16 @@ class Piece{
     }
     draw(context){
         context.beginPath();
+
+        context.drawImage(VIDEO,
+            this.colIndex*VIDEO.videoWidth/SIZE.columns,
+            this.rowIndex*VIDEO.videoHeight/SIZE.rows,
+            VIDEO.videoWidth/SIZE.columns,
+            VIDEO.videoHeight/SIZE.rows,
+            this.x,
+            this.y,
+            this.width,
+            this.height);
         context.rect(this.x,this.y,this.width,this.height);
         context.stroke();
     }
