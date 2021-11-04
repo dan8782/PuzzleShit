@@ -22,11 +22,8 @@ function main(){
         VIDEO.onloadeddata=function (){
             handleResize();
             //window.addEventListener('resize',handleResize);
-<<<<<<< HEAD
             initializePieces(SIZE.rows,SIZE.columns);
-=======
             initializePieces(SIZE.rows,SIZE.columns)
->>>>>>> 9ec13aa292d583f015f8b9784438ddc05202065c
             updateCanvas();
         }
     }).catch(function (err){
@@ -193,10 +190,7 @@ class Piece{
             this.y,
             this.width,
             this.height);
-<<<<<<< HEAD
-
-=======
->>>>>>> 9ec13aa292d583f015f8b9784438ddc05202065c
+        
         context.rect(this.x,this.y,this.width,this.height);
         context.stroke();
     }
